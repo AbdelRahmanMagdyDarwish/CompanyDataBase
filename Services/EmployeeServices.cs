@@ -3,6 +3,7 @@ using CompanyDataBase.Entities;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Security.Policy;
 using System.Xml.Linq;
 
 namespace CompanyDataBase.Services
@@ -14,7 +15,7 @@ namespace CompanyDataBase.Services
         {
             this.context = context;
         }
-        public void AddEmployee (Employee employee)
+        public Employee AddEmployee (Employee employee)
         {
             var emp = new Employee()
             {
@@ -28,6 +29,7 @@ namespace CompanyDataBase.Services
             };
             context.Add(emp);
             context.SaveChanges();
+            return emp; 
         }
         public List<Employee> getEmployees ()
         {

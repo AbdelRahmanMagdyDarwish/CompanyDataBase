@@ -17,8 +17,8 @@ namespace CompanyDataBase.Controllers
         [HttpPost("AddEmployee")]
         public IActionResult AddEmployee(Employee employee)
         {
-            employeeServices.AddEmployee(employee);
-            return Ok();
+            var employeeAdded= employeeServices.AddEmployee(employee);
+            return Created(nameof(AddEmployee),employeeAdded);
         }
         [HttpGet("GetEmployees")]
         public IActionResult GetEmployee()
